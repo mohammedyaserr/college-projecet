@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matron Login</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('{%static 'img/logincover(m).jpg'%}'); /* Replace with your image */
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0;
+            padding-right: 50px;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px; /* Set a max width for the form */
+            width: 100%; /* Full width on smaller screens */
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2 class="text-center">Matron Login</h2>
+    {% if error %}
+    <p style="color: red;">{{error}}</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="parentid">Username:</label>
+            <input type="text" class="form-control" id="usrn" name="usrn" required>
+        </div>
+
+        <div class="form-group">
+            <label for="paswrd">Password:</label>
+            <input type="password" class="form-control" id="paswrd" name="paswrd" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
